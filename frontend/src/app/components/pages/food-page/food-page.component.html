@@ -1,4 +1,5 @@
-<div *ngIf="food" class="container">
+<app-not-found [visible]="!food.id" notFoundMessage="Food Not Found" resetLinkText="Continue to Homepage"></app-not-found>
+<div *ngIf="food.id" class="container">
     <img [src]="food.imageUrl" [alt]="food.name" />
 
     <div class="details">
@@ -33,7 +34,7 @@
 
         <div class="price">
             <span>
-        {{food.price | currency}}
+        {{food.price | currency:"INR"}}
       </span>
         </div>
 

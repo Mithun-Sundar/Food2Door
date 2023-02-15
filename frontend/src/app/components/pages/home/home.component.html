@@ -1,5 +1,6 @@
 <app-search></app-search>
 <app-tags></app-tags>
+<app-not-found [visible]="!foods || !foods.length" resetLinkText="Search Again"></app-not-found>
 <ul>
     <li *ngFor="let food of foods">
         <a routerLink="/food/{{food.id}}">
@@ -29,7 +30,7 @@
 
                 <div class="price">
                     <span>
-            {{food.price | currency}}
+            {{food.price | currency:"INR"}}
           </span>
                 </div>
             </div>

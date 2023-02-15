@@ -1,4 +1,5 @@
 <app-title title="Cart Page"></app-title>
+<app-not-found [visible]="!cart || !cart.items.length" notFoundMessage="Cart is Empty" resetLinkText="Continue Shopping"></app-not-found>
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
@@ -20,7 +21,7 @@
       </select>
             </div>
             <div>
-                {{cartItem.price | currency}}
+                {{cartItem.price | currency:"INR"}}
             </div>
 
             <div>
