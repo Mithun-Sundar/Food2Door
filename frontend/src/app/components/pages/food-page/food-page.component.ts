@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { FoodService } from 'src/app/services/food.service';
+import { Nutrition } from 'src/app/shared/interfaces/Nutrition';
 import { Food } from 'src/app/shared/models/Food';
 
 @Component({
@@ -11,6 +12,7 @@ import { Food } from 'src/app/shared/models/Food';
 })
 export class FoodPageComponent {
   food!: Food;
+  cal!: Nutrition;
   constructor(
     activatedRoute: ActivatedRoute,
     foodService: FoodService,
@@ -18,7 +20,15 @@ export class FoodPageComponent {
     private router: Router
   ) {
     activatedRoute.params.subscribe((params) => {
-      if (params.id) this.food = foodService.getFoodById(params.id);
+      if (params.id) {
+        foodService.getFoodById(params.id).subscribe((serverFood) => {
+          this.food = serverFood;
+          console.log(this.food.name);
+          foodService.getNutrients(this.food.name).subscribe((data) => {
+            this.cal = data;
+          });
+        });
+      }
     });
   }
 

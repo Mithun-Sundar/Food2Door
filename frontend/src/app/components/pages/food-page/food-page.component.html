@@ -31,6 +31,12 @@
         Time to cook about <strong>{{food.cookTime}}</strong> minutes
       </span>
         </div>
+        <div class="Nutrients">
+            <div>Calories: {{cal.calories.value}} {{cal.calories.unit}}</div>
+            <div>Carbs: {{cal.carbs.value}} {{cal.carbs.unit}}</div>
+            <div>Fat: {{cal.fat.value}} {{cal.fat.unit}}</div>
+            <div>Protein: {{cal.protein.value}} {{cal.protein.unit}}</div>
+        </div>
 
         <div class="price">
             <span>
@@ -39,6 +45,5 @@
         </div>
 
         <button (click)="addToCart()">Add To Cart</button>
-
     </div>
 </div>
